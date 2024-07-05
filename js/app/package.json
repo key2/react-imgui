@@ -1,0 +1,30 @@
+{
+  "name": "react-ssd1306-app",
+  "version": "0.0.0",
+  "description": "React SSD1306 Demo App",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "dev-web": "parcel src/index.html",
+    "dev": "rollup -c build/rollup.config.js --watch",
+    "build": "rollup -c build/rollup.config.js"
+  },
+  "keywords": [],
+  "author": "Yifeng Wang",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.11.0",
+    "react-reconciler": "^0.23.0"
+  },
+  "devDependencies": {
+    "jsx-transform": "^2.4.0",
+    "magic-string": "^0.25.4",
+    "rollup": "^1.25.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-pluginutils": "^2.8.2"
+  },
+  "browserslist": [
+    "last 1 Chrome versions"
+  ]
+}
