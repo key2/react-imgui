@@ -1,0 +1,6 @@
+[submodule "external/quickjs"]
+	path = external/quickjs
+	url = git@github.com:bellard/quickjs.git
+[submodule "external/cimgui"]
+	path = external/cimgui
+	url = git@github.com:cimgui/cimgui.git
