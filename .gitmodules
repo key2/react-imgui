@@ -4,3 +4,6 @@
 [submodule "external/cimgui"]
 	path = external/cimgui
 	url = git@github.com:cimgui/cimgui.git
+[submodule "external/cimplot"]
+	path = external/cimplot
+	url = git@github.com:cimgui/cimplot.git
