@@ -14,16 +14,14 @@
 struct native_button_s {
   struct style_val_s **colors;
 
-  
+  JSValue onPress;  
   ImVec2 bsize;
   char title[100];
-  JSValue onPress;
 };
 
 
 static void update_native_button(JSContext *ctx, JSValue this_val, JSValue props)
 {
-
 
   JSValue  title, size;
 
@@ -40,7 +38,7 @@ static void update_native_button(JSContext *ctx, JSValue this_val, JSValue props
   const char *buf = NULL;
   size_t plen;
   if(JS_IsString(title)){
-    strncpy(nb->title, JS_ToCStringLen(ctx, &plen, title), 100);
+    strncpy(nb->title, JS_ToCStringLen(ctx, &plen, title), 99);
   }
   JS_FreeValue(ctx, title);
  
@@ -50,7 +48,7 @@ static void update_native_button(JSContext *ctx, JSValue this_val, JSValue props
   size = JS_GetPropertyStr(ctx, props, "size");
   if(JS_IsObject(size)){
     JSValue sm;
-    int x, y;
+    uint32_t x, y;
     sm = JS_GetPropertyStr(ctx, size, "width");
     if(JS_IsNumber(sm)){
       JS_ToUint32(ctx, &x, sm);
@@ -69,8 +67,9 @@ static void update_native_button(JSContext *ctx, JSValue this_val, JSValue props
   }
 
 
-  nb->onPress = JS_GetPropertyStr(ctx, props, "onPress");
   
+  nb->onPress = JS_GetPropertyStr(ctx, props, "onPress");
+
   native_get_color(ctx, props,   nb->colors);
 
 
@@ -112,7 +111,7 @@ static void create_native_button(JSContext *ctx, JSValue this_val, JSValue props
   memset(nb, 0, sizeof(struct native_button_s));
   s->priv = nb;
   nb->colors = create_style(color_table, "button");
-  nb->onPress = JS_UNDEFINED;
+  nb->onPress = JS_UNINITIALIZED;
   
   update_native_button(ctx, this_val, props);
 
@@ -133,7 +132,7 @@ static void delete_native_button(JSContext *ctx, JSValue this_val)
 static void free_native_button(void *arg)
 {
   struct native_button_s *nb = arg;
-
+  printf("Free button!!!!\n");
   if(nb->colors)
     free_style(nb->colors);
 

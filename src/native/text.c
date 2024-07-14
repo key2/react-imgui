@@ -30,10 +30,11 @@ static void update_native_text(JSContext *ctx, JSValue this_val, JSValue props)
   
   if(JS_IsArray(ctx, children)){
     JSValue len;
-    int arrlen;
+    uint32_t arrlen;
     len = JS_GetPropertyStr(ctx, children, "length");
     JS_ToUint32(ctx, &arrlen, len);    
 
+    printf("text array len %d\n", arrlen);
     JS_FreeValue(ctx, len);
 
     if(arrlen > 1){
@@ -60,7 +61,7 @@ static void update_native_text(JSContext *ctx, JSValue this_val, JSValue props)
     }
   }
 
-  JS_FreeValue(ctx, children);
+  // JS_FreeValue(ctx, children);
 
   native_get_color(ctx, props,   nt->colors);
 

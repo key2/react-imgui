@@ -30,6 +30,9 @@ void native_pop_color(struct style_val_s **st_lst);
 #include "vslider.h"
 #include "sameline.h"
 #include "group.h"
+#include "checkbox.h"
+#include "plotline.h"
+#include "radio.h"
 
 static struct native_func_s *native_table[] = {
   &native_button,
@@ -38,7 +41,12 @@ static struct native_func_s *native_table[] = {
   &native_input_text,
   &native_vslider,
   &native_sameline,
-  &native_group
+  &native_group,
+  &native_checkbox,
+  &native_plot_line,
+  &native_radio_container,
+  &native_radio_button
+
 };
 
 #endif

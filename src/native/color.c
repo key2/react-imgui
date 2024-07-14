@@ -216,5 +216,7 @@ unsigned int find_color(const char *name)
 
   if(validate_color(name))
     return convert_color(name);
+  else
+    return 0xffffffff;
 }
 

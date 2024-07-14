@@ -48,7 +48,6 @@ static void create_native_unknown(JSContext *ctx, JSValue this_val, JSValue prop
   memset(nt, 0, sizeof(struct native_unknown_s));
   s->priv = nt;
   update_native_unknown(ctx, this_val, props);
-
 }
 
 static void delete_native_unknown(JSContext *ctx, JSValue this_val)

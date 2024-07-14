@@ -93,7 +93,7 @@ void render_children(JSContext *ctx, JSValueConst this_val)
   if (JS_IsException(children)){
     printf("pas de children\n");
   }
-  int arrlen;
+  uint32_t arrlen;
   if(JS_IsArray(ctx, children)){
     tmp = JS_GetPropertyStr(ctx, children, "length");
     JS_ToUint32(ctx, &arrlen, tmp);
@@ -123,13 +123,14 @@ struct native_func_s *find_native_fun(const char *name)
       return nf;
   }
 
+  printf("DIDNT FIND %s\n\n", name);
   /* Did not find, send unknown !*/  
   for(int i = 0; i < countof(native_table); i++){
-    printf("DIDNT FIND\n\n");
     nf = native_table[i];
     if(!strcmp("unknown", nf->type))
       return nf;
   }
+  return NULL;
 }
 
 

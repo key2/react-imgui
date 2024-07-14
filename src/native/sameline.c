@@ -34,7 +34,7 @@ static void render_sameline_children(JSContext *ctx, JSValueConst this_val)
   if (JS_IsException(children)){
     printf("pas de children\n");
   }
-  int arrlen;
+  uint32_t arrlen;
   if(JS_IsArray(ctx, children)){
     tmp = JS_GetPropertyStr(ctx, children, "length");
     JS_ToUint32(ctx, &arrlen, tmp);
